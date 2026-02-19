@@ -1,4 +1,4 @@
-const filter = [
+export const filter = [
   ['Product_Current_Inventory', '<>', 0],
   'or',
   [
@@ -8,7 +8,7 @@ const filter = [
   ],
 ];
 
-const fields = [
+export const fields = [
   {
     caption: 'ID',
     dataField: 'Product_ID',
