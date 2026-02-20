@@ -10,11 +10,13 @@ dxTreeView.defaultOptions<dxTreeViewProperties>({
   device: { deviceType: 'desktop' },
   options: {
     onInitialized: (e: dxTreeViewInitializedEvent) => {
-      const comp = e.component;
-      if ((comp?.option() as any).cssClass.includes('dx-filterbuilder-fields')) {
-        comp?.option('height', 200);
-        comp?.option('width', 200); 
-        comp?.option('searchEnabled', true);
+      const treeViewInstance = e.component;
+      if ((treeViewInstance?.option('cssClass') as string)?.includes('dx-filterbuilder-fields')) {
+        treeViewInstance?.option({
+          height: 200,
+          width: 200,
+          searchEnabled: true,
+        })
       }
     }
   }
