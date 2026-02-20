@@ -1,4 +1,4 @@
-export const filter = [
+const filter = [
   ['Product_Current_Inventory', '<>', 0],
   'or',
   [
@@ -8,7 +8,7 @@ export const filter = [
   ],
 ];
 
-export const fields = [
+const fields = [
   {
     caption: 'ID',
     dataField: 'Product_ID',
@@ -65,3 +65,6 @@ export const fields = [
     dataType: 'datetime',
   }
 ];
+
+window.filter = filter;
+window.fields = fields;
