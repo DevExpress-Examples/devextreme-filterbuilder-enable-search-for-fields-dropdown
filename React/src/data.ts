@@ -72,5 +72,5 @@ export const fields: Field[] = [
     dataField: 'Product_Last_Updated',
     caption: 'Last Updated',
     dataType: 'datetime',
-  }
+  },
 ];

@@ -2,9 +2,9 @@ import { useCallback, useState } from 'react';
 import './App.css';
 import 'devextreme/dist/css/dx.material.blue.light.compact.css';
 import FilterBuilder, { type FilterBuilderTypes } from 'devextreme-react/filter-builder';
-import dxTreeView, {  type Properties as dxTreeViewProperties, type InitializedEvent as dxTreeViewInitializedEvent  } from "devextreme/ui/tree_view";
+import dxTreeView, { type Properties as dxTreeViewProperties, type InitializedEvent as dxTreeViewInitializedEvent } from 'devextreme/ui/tree_view';
 
-import { filter, fields } from './data.ts';
+import { filter, fields } from './data';
 
 dxTreeView.defaultOptions<dxTreeViewProperties>({
   device: { deviceType: 'desktop' },
@@ -16,13 +16,13 @@ dxTreeView.defaultOptions<dxTreeViewProperties>({
           height: 200,
           width: 200,
           searchEnabled: true,
-        })
+        });
       }
-    }
-  }
+    },
+  },
 });
 
-const App = () => {
+function App(): JSX.Element {
   const [value, setValue] = useState(filter);
 
   const onValueChanged = useCallback((e: FilterBuilderTypes.ValueChangedEvent) => {
@@ -36,6 +36,6 @@ const App = () => {
       </div>
     </div>
   );
-};
+}
 
 export default App;
