@@ -65,6 +65,3 @@ const fields = [
     dataType: 'datetime',
   }
 ];
-
-window.filter = filter;
-window.fields = fields;
