@@ -1,29 +1,105 @@
 @using ASP_NET_Core.Models
 
-<h2>Home</h2>
+@{
+    var value = new object[] {
+        new object[] { "Product_Current_Inventory", FilterBuilderFieldFilterOperations.NotEqual, 0 },
+        "or",
+        new object[] {
+            new object[] { "Product_Name", FilterBuilderFieldFilterOperations.Contains, "HD" },
+            "and",
+            new object[] { "Product_Cost", FilterBuilderFieldFilterOperations.LessThan, 200 }
+        }
+    };
+}
 
-@(Html.DevExtreme().DataGrid<SampleOrder>()
-    .ShowBorders(true)
-    .DataSource(d => d.Mvc().Controller("SampleData").LoadAction("Get").Key("OrderID"))
-    .Columns(columns => {
-        columns.AddFor(m => m.OrderID);
-        columns.AddFor(m => m.OrderDate);
-        columns.AddFor(m => m.CustomerName);
-        columns.AddFor(m => m.ShipCountry);
-        columns.AddFor(m => m.ShipCity);
-    })
-    .Paging(p => p.PageSize(10))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .GroupPanel(p => p.Visible(true))
-    .Grouping(g => g.AutoExpandAll(false))
-    .RemoteOperations(true)
-    .Summary(s => s
-        .TotalItems(totalItems => {
-            totalItems.AddFor(m => m.ShipCity).SummaryType(SummaryType.Count);
+<div class="filter-container">
+    @(Html.DevExtreme().FilterBuilder()
+        .ID("filterBuilder")
+        .Fields(fields => {
+            fields.Add()
+                .DataField("Product_ID")
+                .Caption("ID")
+                .DataType(FilterBuilderFieldDataType.Number);
+
+            fields.Add()
+                .DataField("Product_Name");
+
+            fields.Add()
+                .Caption("Cost")
+                .DataField("Product_Cost")
+                .DataType(FilterBuilderFieldDataType.Number)
+                .Format(Format.Currency);
+
+            fields.Add()
+                .DataField("Product_Sale_Price")
+                .Caption("Sale Price")
+                .DataType(FilterBuilderFieldDataType.Number)
+                .Format(Format.Currency);
+
+            fields.Add()
+                .DataField("Product_Retail_Price")
+                .Caption("Retail Price")
+                .DataType(FilterBuilderFieldDataType.Number)
+                .Format(Format.Currency);
+
+           fields.Add()
+                .DataField("Product_Current_Inventory")
+                .Caption("Inventory")
+                .DataType(FilterBuilderFieldDataType.Number);
+
+            fields.Add()
+                .DataField("Product_Category")
+                .Caption("Category")
+                .DataType(FilterBuilderFieldDataType.String);
+
+            fields.Add()
+                .DataField("Product_Brand")
+                .Caption("Brand")
+                .DataType(FilterBuilderFieldDataType.String);
+
+            fields.Add()
+                .DataField("Product_SKU")
+                .Caption("SKU")
+                .DataType(FilterBuilderFieldDataType.String);
+
+            fields.Add()
+                .DataField("Product_Supplier")
+                .Caption("Supplier")
+                .DataType(FilterBuilderFieldDataType.String);
+
+            fields.Add()
+                .DataField("Product_Weight")
+                .Caption("Weight (kg)")
+                .DataType(FilterBuilderFieldDataType.Number);
+
+            fields.Add()
+                .DataField("Product_Created_Date")
+                .Caption("Created Date")
+                .DataType(FilterBuilderFieldDataType.Date);
+
+            fields.Add()
+                .DataField("Product_Last_Updated")
+                .Caption("Last Updated")
+                .DataType(FilterBuilderFieldDataType.DateTime);
         })
-        .GroupItems(groupItems => {
-            groupItems.Add().SummaryType(SummaryType.Count);
-        })
+        .Value(value)
     )
-)
+</div>
+
+<script>
+    DevExpress.ui.dxTreeView.defaultOptions({
+        device: { deviceType: 'desktop' },
+        options: {
+            onInitialized: (e) => {
+                const treeViewInstance = e.component;
+                if (treeViewInstance.option('cssClass').includes('dx-filterbuilder-fields')) {
+                    treeViewInstance.option({
+                        height: 200,
+                        width: 200,
+                        searchEnabled: true
+                    });
+                }
+            }
+        }
+    });
+</script>
