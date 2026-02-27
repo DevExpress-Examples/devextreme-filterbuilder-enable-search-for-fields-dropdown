@@ -1,10 +1,22 @@
+DevExpress.ui.dxTreeView.defaultOptions({
+  device: { deviceType: 'desktop' },
+  options: {
+    onInitialized: (e) => {
+      const treeViewInstance = e.component;
+      if (treeViewInstance.option('cssClass').includes('dx-filterbuilder-fields')) {
+        treeViewInstance.option({
+          height: 200,
+          width: 200,
+          searchEnabled: true
+        });
+      }
+    }
+  }
+});
+
 $(() => {
-  let count = 0;
-  $('#btn').dxButton({
-    text: `Click count: ${count}`,
-    onClick(e) {
-      count += 1;
-      e.component.option('text', `Click count: ${count}`);
-    },
+  $('#filterBuilder').dxFilterBuilder({
+    fields,
+    value: filter,
   });
 });
