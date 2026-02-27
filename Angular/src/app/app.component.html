@@ -1,3 +1,5 @@
-<div class="default-style">
-  <dx-button [text]="buttonText" (onClick)="onClick($event)"></dx-button>
+<div class="demo-container">
+  <div class="filter-container">
+    <dx-filter-builder [fields]="fields" [(value)]="filter"></dx-filter-builder>
+  </div>
 </div>

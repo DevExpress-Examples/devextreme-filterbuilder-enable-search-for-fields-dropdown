@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { ClickEvent } from 'devextreme/ui/button';
+import TreeView, { Properties } from "devextreme/ui/tree_view";
+import { DxTreeViewTypes } from "devextreme-angular/ui/tree-view"
+import { Service } from './app.service';
+import type { Fields, Condition } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +10,31 @@ import { ClickEvent } from 'devextreme/ui/button';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Angular';
+  fields: Fields;
 
-  counter = 0;
+  filter: Condition;
 
-  buttonText = 'Click count: 0';
+  gridFilterValue: Condition;
 
-  onClick(_e: ClickEvent): void {
-    this.counter++;
-    this.buttonText = `Click count: ${this.counter}`;
+  constructor(service: Service) {
+    TreeView.defaultOptions<Properties>({
+      device: { deviceType: "desktop" },
+      options: {
+        onInitialized: (e: DxTreeViewTypes.InitializedEvent) => {
+          const treeViewInstance = e.component;
+          if ((treeViewInstance?.option('cssClass') as string)?.includes('dx-filterbuilder-fields')) {
+            treeViewInstance?.option({
+              height: 200,
+              width: 200,
+              searchEnabled: true,
+            })
+          }
+        }
+      }
+    });
+
+    this.fields = service.getFields();
+    this.filter = service.getFilter();
+    this.gridFilterValue = this.filter;
   }
 }
