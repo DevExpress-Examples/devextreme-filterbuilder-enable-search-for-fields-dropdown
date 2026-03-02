@@ -1,28 +1,72 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 import 'devextreme/dist/css/dx.material.blue.light.compact.css';
-import DxButton from 'devextreme-vue/button';
+import DxFilterBuilder from 'devextreme-vue/filter-builder';
+import TreeView from 'devextreme/ui/tree_view';
+import { filter, fields } from '../data.ts';
 
-const props = defineProps({
-  text: {
-    type: String,
-    default: 'count',
-  },
+const filterValue = ref(filter);
+
+TreeView.defaultOptions({
+  device: { deviceType: 'desktop' },
+  options: {
+    onInitialized: (e) => {
+      const treeViewInstance = e.component;
+      if (treeViewInstance?.option('cssClass')?.includes('dx-filterbuilder-fields')) {
+        treeViewInstance?.option({
+          height: 200,
+          width: 200,
+          searchEnabled: true,
+        });
+      }
+    }
+  }
 });
-const count = ref(0);
-const buttonText = computed < string > (
-  () => `Click ${props.text}: ${count.value}`
-);
-function clickHandler() {
-  count.value += 1;
-}
 </script>
 <template>
   <div>
-    <DxButton
-      :text="buttonText"
-      @click="clickHandler"
-    />
+    <div class="filter-container">
+      <DxFilterBuilder
+        :fields="fields"
+        v-model:value="filterValue"
+      />
+    </div>
   </div>
 </template>
+<style>
+.filter-container {
+  background-color: transparent;
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 14%), 0 0 2px 0 rgb(0 0 0 / 12%);
+  border-radius: 6px;
+  padding: 15px;
+  margin: 24px;
+}
+
+.dx-filterbuilder .dx-numberbox {
+  width: 80px;
+}
+
+.dx-treeview-search {
+  margin-bottom: 4px;
+}
+
+.dx-filterbuilder-overlay
+  .dx-popup-content-scrollable
+  > div.dx-treeview-with-search {
+  max-height: 300px;
+  height: auto;
+}
+
+.dx-filterbuilder-overlay div.dx-popup-content-scrollable {
+  overflow: hidden;
+}
+
+.dx-filterbuilder-group-item .dx-scrollable-scroll-content {
+  display: none;
+}
+
+.dx-treeview .dx-empty-message {
+    padding: 8px;
+}
+</style>
