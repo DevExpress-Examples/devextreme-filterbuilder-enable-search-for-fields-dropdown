@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DxFilterBuilderTypes } from "devextreme-angular/ui/filter-builder"
 
 export type Condition = any[];
 export type Fields = typeof fields;
@@ -13,7 +14,7 @@ const filter: Condition = [
   ],
 ];
 
-const fields: Record<string, string>[] = [
+const fields: DxFilterBuilderTypes.Field[] = [
   {
     caption: 'ID',
     dataField: 'Product_ID',
