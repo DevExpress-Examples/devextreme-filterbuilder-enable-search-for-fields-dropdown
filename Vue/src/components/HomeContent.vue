@@ -4,16 +4,18 @@ import { ref } from 'vue';
 import 'devextreme/dist/css/dx.material.blue.light.compact.css';
 import DxFilterBuilder from 'devextreme-vue/filter-builder';
 import TreeView from 'devextreme/ui/tree_view';
-import { filter, fields } from '../data.ts';
+import type { Properties, InitializedEvent } from 'devextreme/ui/tree_view';
+import { filter, fields } from '../data';
 
 const filterValue = ref(filter);
 
-TreeView.defaultOptions({
+TreeView.defaultOptions<Properties>({
   device: { deviceType: 'desktop' },
   options: {
-    onInitialized: (e) => {
-      const treeViewInstance = e.component;
-      if (treeViewInstance?.option('cssClass')?.includes('dx-filterbuilder-fields')) {
+    onInitialized: (e: InitializedEvent) => {
+      const treeViewInstance = e.component as TreeView;
+
+      if ((treeViewInstance?.option('cssClass') as string)?.includes('dx-filterbuilder-fields')) {
         treeViewInstance?.option({
           height: 200,
           width: 200,

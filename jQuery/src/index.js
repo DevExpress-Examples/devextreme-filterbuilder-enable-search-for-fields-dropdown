@@ -1,3 +1,5 @@
+import { filter, fields } from './data.js';
+
 DevExpress.ui.dxTreeView.defaultOptions({
   device: { deviceType: 'desktop' },
   options: {
