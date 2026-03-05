@@ -1,4 +1,4 @@
-import type { FilterBuilderTypes } from "devextreme-react/filter-builder"
+import type { FilterBuilderTypes } from 'devextreme-react/filter-builder';
 
 export const filter = [
   ['Product_Current_Inventory', '<>', 0],
