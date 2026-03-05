@@ -1,11 +1,4 @@
-import type { DataType } from 'devextreme/common';
-
-interface Field {
-  caption?: string,
-  dataField: string,
-  dataType: DataType,
-  format?: string,
-}
+import type { FilterBuilderTypes } from "devextreme-react/filter-builder"
 
 export const filter = [
   ['Product_Current_Inventory', '<>', 0],
@@ -17,7 +10,7 @@ export const filter = [
   ],
 ];
 
-export const fields: Field[] = [
+export const fields: FilterBuilderTypes.Field[] = [
   {
     caption: 'ID',
     dataField: 'Product_ID',
