@@ -1,4 +1,39 @@
-.main {
+.demo-container {
   margin: 50px;
   width: 90vw;
+}
+
+.filter-container {
+  background-color: transparent;
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 14%), 0 0 2px 0 rgb(0 0 0 / 12%);
+  border-radius: 6px;
+  padding: 15px;
+  margin: 24px;
+}
+
+.dx-filterbuilder .dx-numberbox {
+  width: 80px;
+}
+
+.dx-treeview-search {
+  margin-bottom: 4px;
+}
+
+.dx-filterbuilder-overlay
+  .dx-popup-content-scrollable
+  > div.dx-treeview-with-search {
+  max-height: 300px;
+  height: auto;
+}
+
+.dx-filterbuilder-overlay div.dx-popup-content-scrollable {
+  overflow: hidden;
+}
+
+.dx-filterbuilder-group-item .dx-scrollable-scroll-content {
+  display: none;
+}
+    
+.dx-treeview .dx-empty-message {
+    padding: 8px;
 }
