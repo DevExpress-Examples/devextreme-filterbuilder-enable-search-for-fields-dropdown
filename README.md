@@ -4,49 +4,44 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
-# DevExtreme Examples Template
+# DevExtreme FilterBuilder - How to Enable Search for Fields Dropdown
 
-This is the repository template for creating new examples. 
+This example demonstrates how to enable search for the fields dropdown via [TreeView.defaultOptions(rule)](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeView/Methods/#defaultOptionsrule).
 
-![Example image](images/image-template.png)
+![FilterBuilder Fields Dropdown with Search](images/search-enabled-for-dropdown.gif)
 
-Use **DevExtreme _Product_ - _Task_** template for a title. 
+## Implementation Details 
 
-Describe the solved task in this section.
-
-Put a screenshot/gif that illustrates the result here.
-
-Then, add implementation details (steps, code snippets, and other technical information in a free form), or add a link to an existing document with implementation details. 
+Use [TreeView.defaultOptions(rule)](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeView/Methods/#defaultOptionsrule) method to set the [TreeView.searchEnabled](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#searchEnabled) option to true. Then, add CSS to resolve styling and scrolling issues.
 
 ## Files to Review
 
 - **Angular**
     - [app.component.html](Angular/src/app/app.component.html)
     - [app.component.ts](Angular/src/app/app.component.ts)
+    - [app.component.scss](Angular/src/app/app.component.scss)
 - **React**
     - [App.tsx](React/src/App.tsx)
+    - [App.css](React/src/App.css)
 - **Vue**
-    - [App.vue](Vue/src/App.vue)
-    - [Home.vue](Vue/src/components/HomeContent.vue)
+    - [HomeContent.vue](Vue/src/components/HomeContent.vue)
 - **jQuery**
     - [index.html](jQuery/src/index.html)
     - [index.js](jQuery/src/index.js)
+    - [index.css](jQuery/src/index.css)
 - **ASP.NET Core**    
     - [Index.cshtml](ASP.NET%20Core/Views/Home/Index.cshtml)
+    - [Site.css](ASP.NET%20Core/wwwroot/css/Site.css)
 
 ## Documentation
 
-- link
-- link
-- ...
+- [FilterBuilder Overview](https://js.devexpress.com/Documentation/Guide/UI_Components/FilterBuilder/Overview/)
+- [TreeView.defaultOptions(rule)](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeView/Methods/#defaultOptionsrule)
+- [TreeView.searchEnabled](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#searchEnabled)
+- [HTML-Based Components Customization](https://js.devexpress.com/Documentation/Guide/Themes_and_Styles/HTML-Based_Components_Customization/)
 
-## More Examples
-
-- link
-- link
-- ...
 <!-- feedback -->
-## Does This Example Address Your Development Requirements/Objectives?
+## Does this example address your development requirements/objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-filterbuilder-enable-search-for-fields-dropdown&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-filterbuilder-enable-search-for-fields-dropdown&~~~was_helpful=no)
 
