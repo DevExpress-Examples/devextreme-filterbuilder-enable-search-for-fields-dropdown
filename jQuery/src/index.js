@@ -5,8 +5,8 @@ DevExpress.ui.dxTreeView.defaultOptions({
   options: {
     onInitialized: (e) => {
       const treeViewInstance = e.component;
-      if (treeViewInstance.option('cssClass').includes('dx-filterbuilder-fields')) {
-        treeViewInstance.option({
+      if (treeViewInstance?.option('cssClass')?.includes('dx-filterbuilder-fields')) {
+        treeViewInstance?.option({
           height: 200,
           width: 200,
           searchEnabled: true
