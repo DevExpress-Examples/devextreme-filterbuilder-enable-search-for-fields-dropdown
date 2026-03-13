@@ -28,7 +28,7 @@ if (treeViewInstance.option('cssClass')?.includes('dx-filterbuilder-fields')) {
 
 This example calls [defaultOptions(rule)](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeView/Methods/#defaultOptionsrule) to add this check in an [onInitialized](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#onInitialized) handler for all TreeView instances in the app. If the check returns `true`, the handler enables the TreeView's [searchEnabled](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#searchEnabled) option.
 
-To resolve scrolling issues on some platforms, apply the following CSS styles:
+To resolve scrolling issues on certain platforms, apply the following CSS styles:
 
 ```CSS
 .dx-filterbuilder-overlay .dx-popup-content-scrollable > div.dx-treeview-with-search {
