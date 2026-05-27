@@ -3,9 +3,11 @@ import TreeView, { Properties } from "devextreme/ui/tree_view";
 import { DxTreeViewTypes } from "devextreme-angular/ui/tree-view"
 import { Service } from './app.service';
 import type { Fields, Condition } from './app.service';
+import { DxFilterBuilderModule } from 'devextreme-angular';
 
 @Component({
   selector: 'app-root',
+  imports: [DxFilterBuilderModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
