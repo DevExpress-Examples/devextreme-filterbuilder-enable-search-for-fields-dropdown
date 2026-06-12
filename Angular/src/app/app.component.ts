@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import TreeView, { Properties } from "devextreme/ui/tree_view";
 import { DxTreeViewTypes } from "devextreme-angular/ui/tree-view"
 import { Service } from './app.service';
@@ -9,6 +9,7 @@ import { DxFilterBuilderModule } from 'devextreme-angular';
   selector: 'app-root',
   imports: [DxFilterBuilderModule],
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
